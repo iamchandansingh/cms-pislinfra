@@ -1,0 +1,135 @@
+{
+  "kind": "singleType",
+  "collectionName": "ehs_pages",
+  "info": {
+    "singularName": "ehs-page",
+    "pluralName": "ehs-pages",
+    "displayName": "EHS Page"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "text"
+    },
+    "breadcrumb": {
+      "type": "string"
+    },
+    "heroImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    },
+    "gallery": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.gallery-item"
+    },
+    "stats": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.stat-item"
+    },
+    "features": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.feature-item"
+    },
+    "philosophy": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.philosophy-item"
+    },
+    "awards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.award-item"
+    },
+    "rules": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.rule-item"
+    },
+    "resources": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.resource-item"
+    },
+    "safetyCultureTitle": {
+      "type": "string"
+    },
+    "safetyCultureDesc": {
+      "type": "text"
+    },
+    "approaches": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.approach-item"
+    },
+    "pillars": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.pillar-item"
+    },
+    "programs": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.program-item"
+    },
+    "commitmentTitle": {
+      "type": "string"
+    },
+    "philosophySectionTitle": {
+      "type": "string"
+    },
+    "approachesSectionTitle": {
+      "type": "string"
+    },
+    "approachesSectionSubtitle": {
+      "type": "text"
+    },
+    "rulesSectionTitle": {
+      "type": "string"
+    },
+    "rulesSectionSubtitle": {
+      "type": "string"
+    },
+    "pillarsSectionTitle": {
+      "type": "string"
+    },
+    "programsSectionTitle": {
+      "type": "string"
+    },
+    "awardsSectionTitle": {
+      "type": "string"
+    },
+    "awardsSectionSubtitle": {
+      "type": "string"
+    },
+    "resourcesSectionTitle": {
+      "type": "string"
+    },
+    "resourcesSectionSubtitle": {
+      "type": "string"
+    },
+    "resourcesSectionDesc": {
+      "type": "text"
+    },
+    "gallerySectionTitle": {
+      "type": "string"
+    }
+  }
+}

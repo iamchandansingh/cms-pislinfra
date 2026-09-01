@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "top_headers",
+  "info": {
+    "singularName": "top-header",
+    "pluralName": "top-headers",
+    "displayName": "Top Header",
+    "description": "Top Header contact information"
+  },
+  "options": { "draftAndPublish": false },
+  "attributes": {
+    "address": { "type": "text", "required": true },
+    "phone": { "type": "string", "required": true },
+    "email": { "type": "string", "required": true },
+    "facebookUrl": { "type": "string" },
+    "twitterUrl": { "type": "string" },
+    "linkedinUrl": { "type": "string" },
+    "instagramUrl": { "type": "string" }
+  }
+}

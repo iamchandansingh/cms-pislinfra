@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_csr_focus_areas",
+  "info": {
+    "displayName": "Focus Area",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": { "type": "string" },
+    "description": { "type": "text" },
+    "iconName": { "type": "string" },
+    "iconColor": { "type": "string" },
+    "image": { "type": "media", "multiple": false, "required": false, "allowedTypes": ["images"] }
+  }
+}

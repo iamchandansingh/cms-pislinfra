@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_shared_stat_items",
+  "info": {
+    "displayName": "Stat Item",
+    "icon": "chart-pie"
+  },
+  "options": {},
+  "attributes": {
+    "value": { "type": "string" },
+    "suffix": { "type": "string" },
+    "label": { "type": "string" },
+    "sub": { "type": "string" },
+    "iconName": { "type": "string" }
+  }
+}

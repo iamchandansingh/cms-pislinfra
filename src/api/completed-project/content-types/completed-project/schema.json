@@ -1,0 +1,62 @@
+{
+  "kind": "collectionType",
+  "collectionName": "completed_projects",
+  "info": {
+    "singularName": "completed-project",
+    "pluralName": "completed-projects",
+    "displayName": "Completed Project",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "area": {
+      "type": "string"
+    },
+    "client": {
+      "type": "string"
+    },
+    "timeline": {
+      "type": "string"
+    },
+    "projectStatus": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "string"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    },
+    "cx": {
+      "type": "decimal"
+    },
+    "cy": {
+      "type": "decimal"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_shared_award_items",
+  "info": {
+    "displayName": "Award Item",
+    "icon": "award"
+  },
+  "options": {},
+  "attributes": {
+    "title": { "type": "string" },
+    "subtitle": { "type": "string" },
+    "description": { "type": "text" },
+    "image": { "type": "media", "multiple": false, "required": true, "allowedTypes": ["images"] }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "ongoing_pages",
+  "info": {
+    "singularName": "ongoing-page",
+    "pluralName": "ongoing-pages",
+    "displayName": "Ongoing Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heroTitle": { "type": "string" },
+    "heroSubtitle": { "type": "string" },
+    "heroBreadcrumb": { "type": "string" },
+    "description": { "type": "text" },
+    "heroImage": { "type": "media", "multiple": false, "required": false, "allowedTypes": ["images"] },
+    "seo": { "type": "component", "repeatable": false, "component": "shared.seo" }
+  }
+}

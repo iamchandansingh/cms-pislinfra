@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_shared_map_markers",
+  "info": {
+    "displayName": "Map Marker",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "city": {
+      "type": "string",
+      "required": true
+    },
+    "cx": {
+      "type": "decimal",
+      "required": true
+    },
+    "cy": {
+      "type": "decimal",
+      "required": true
+    }
+  }
+}

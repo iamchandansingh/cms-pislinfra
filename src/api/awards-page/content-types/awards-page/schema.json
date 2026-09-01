@@ -1,0 +1,76 @@
+{
+  "kind": "singleType",
+  "collectionName": "awards_pages",
+  "info": {
+    "singularName": "awards-page",
+    "pluralName": "awards-pages",
+    "displayName": "Awards Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "breadcrumb": {
+      "type": "string"
+    },
+    "heroImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    },
+    "awardsWon": {
+      "type": "integer"
+    },
+    "certificates": {
+      "type": "integer"
+    },
+    "yearsOfExcellence": {
+      "type": "integer"
+    },
+    "projectsDelivered": {
+      "type": "integer"
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.award-cert-item"
+    },
+    "latestAchievementTitle": {
+      "type": "string"
+    },
+    "showcaseTitle": {
+      "type": "string"
+    },
+    "showcaseSubtitle": {
+      "type": "string"
+    },
+    "journeyTitle": {
+      "type": "text"
+    },
+    "journeyDesc": {
+      "type": "text"
+    },
+    "milestonesKicker": {
+      "type": "string"
+    },
+    "milestonesTitle": {
+      "type": "string"
+    },
+    "clientAppreciationsTitle": {
+      "type": "string"
+    }
+  }
+}

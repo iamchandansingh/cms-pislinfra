@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_shared_sub_links",
+  "info": {
+    "displayName": "Sub Link",
+    "description": "Dropdown menu link with an optional icon"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "href": {
+      "type": "string",
+      "required": true
+    },
+    "icon": {
+      "type": "enumeration",
+      "enum": [
+        "FaBuilding",
+        "FaUsers",
+        "FaShieldAlt",
+        "FaAward",
+        "FaHeart"
+      ]
+    }
+  }
+}

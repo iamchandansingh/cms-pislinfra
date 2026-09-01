@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_csr_cards",
+  "info": {
+    "displayName": "Card",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": { "type": "string" },
+    "description": { "type": "text" },
+    "image": { "type": "media", "multiple": false, "required": false, "allowedTypes": ["images"] },
+    "imageLeft": { "type": "boolean", "default": true }
+  }
+}

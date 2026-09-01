@@ -1,0 +1,28 @@
+{
+  "kind": "singleType",
+  "collectionName": "csr_pages",
+  "info": {
+    "singularName": "csr-page",
+    "pluralName": "csr-pages",
+    "displayName": "CSR Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heroTitle": { "type": "string" },
+    "heroSubtitle": { "type": "string" },
+    "heroBreadcrumb": { "type": "string" },
+    "heroImage": { "type": "media", "multiple": false, "required": false, "allowedTypes": ["images"] },
+    "seo": { "type": "component", "repeatable": false, "component": "shared.seo" },
+    "stats": { "type": "component", "repeatable": true, "component": "csr.stat" },
+    "philosophyTitle": { "type": "string" },
+    "philosophyDescription": { "type": "text" },
+    "philosophyImages": { "type": "media", "multiple": true, "required": false, "allowedTypes": ["images"] },
+    "focusAreas": { "type": "component", "repeatable": true, "component": "csr.focus-area" },
+    "givingBackCards": { "type": "component", "repeatable": true, "component": "csr.card" },
+    "environmentCards": { "type": "component", "repeatable": true, "component": "csr.card" },
+    "celebrationCards": { "type": "component", "repeatable": true, "component": "csr.card" }
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "kind": "collectionType",
+  "collectionName": "case_studies",
+  "info": {
+    "singularName": "case-study",
+    "pluralName": "case-studies",
+    "displayName": "Case Study",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "project": {
+      "type": "string"
+    },
+    "developer": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "plinthArea": {
+      "type": "string"
+    },
+    "buildUpArea": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "introduction": {
+      "type": "text"
+    },
+    "overview": {
+      "type": "text"
+    },
+    "engagement": {
+      "type": "json"
+    },
+    "engagementImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "challenges": {
+      "type": "json"
+    },
+    "challengesImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "achievements": {
+      "type": "json"
+    },
+    "achievementsImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "conclusion": {
+      "type": "text"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    },
+    "focusKeyword": {
+      "type": "string"
+    },
+    "seoScore": {
+      "type": "integer",
+      "min": 0,
+      "max": 100
+    }
+  }
+}

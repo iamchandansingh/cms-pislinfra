@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_shared_reports",
+  "info": {
+    "displayName": "Report",
+    "icon": "file-pdf",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "year": {
+      "type": "string"
+    },
+    "desc": {
+      "type": "text"
+    },
+    "size": {
+      "type": "string",
+      "default": "PDF"
+    },
+    "fileUrl": {
+      "type": "string",
+      "description": "Enter the URL or path to the file (e.g., /reports/file.pdf)"
+    },
+    "pdfFile": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "files"
+      ]
+    }
+  }
+}

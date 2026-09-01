@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "client_appreciations",
+  "info": {
+    "singularName": "client-appreciation",
+    "pluralName": "client-appreciations",
+    "displayName": "Client Appreciation",
+    "description": "Client Appreciations & Safety Awards"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "company": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "desc": {
+      "type": "text"
+    },
+    "year": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "string"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

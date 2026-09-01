@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_shared_philosophy_items",
+  "info": {
+    "displayName": "Philosophy Item",
+    "icon": "image"
+  },
+  "options": {},
+  "attributes": {
+    "title": { "type": "string" },
+    "description": { "type": "text" },
+    "image": { "type": "media", "multiple": false, "required": true, "allowedTypes": ["images"] }
+  }
+}

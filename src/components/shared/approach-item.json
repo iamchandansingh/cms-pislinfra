@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_shared_approach_items",
+  "info": {
+    "displayName": "Approach Item",
+    "icon": "bullseye"
+  },
+  "options": {},
+  "attributes": {
+    "year": { "type": "string" },
+    "position": { "type": "string" },
+    "points": { "type": "json" }
+  }
+}

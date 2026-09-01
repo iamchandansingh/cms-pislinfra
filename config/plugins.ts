@@ -1,44 +1,27 @@
-import type { Core } from '@strapi/strapi';
-
-const allowedMediaTypes = [
-  'image/*',
-  'video/*',
-  'audio/*',
-  'application/pdf',
-  'application/msword',
-  'application/vnd.openxmlformats-officedocument.*',
-  'text/plain',
-  'text/csv',
-];
-
-const deniedExecutableTypes = [
-  'application/vnd.microsoft.portable-executable',
-  'application/x-msdownload',
-  'application/x-msdos-program',
-  'application/x-executable',
-  'application/x-dosexec',
-  'application/x-sh',
-  'text/x-shellscript',
-  'application/x-mach-binary',
-];
-
-const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Plugin => ({
-  'users-permissions': {
-    config: {
-      jwtManagement: 'refresh',
-      sessions: {
-        httpOnly: true,
-      },
-    },
-  },
+export default ({ env }: { env: any }) => ({
   upload: {
     config: {
-      security: {
-        allowedTypes: allowedMediaTypes,
-        deniedTypes: deniedExecutableTypes,
+      provider: '@strapi/provider-upload-aws-s3',
+      providerOptions: {
+        baseUrl: 'https://pub-eeb28a3c927b4ae1b67e3e8e731ee105.r2.dev',
+        rootPath: '',
+        s3Options: {
+          credentials: {
+            accessKeyId: '2e0b9723f16cc4c70b48aa4658fcd760',
+            secretAccessKey: 'dff42db69e5004fd42a7d3e061782bb55142290fa797beb4caf5ad54fa7c6984',
+          },
+          region: 'auto',
+          endpoint: 'https://3282b1f29fc44baa63c4b1c3bcdd7d22.r2.cloudflarestorage.com',
+          params: {
+            Bucket: 'pisl-cms-media',
+          },
+        },
+      },
+      actionOptions: {
+        upload: {},
+        uploadStream: {},
+        delete: {},
       },
     },
   },
 });
-
-export default config;

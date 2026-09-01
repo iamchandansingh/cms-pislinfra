@@ -1,0 +1,62 @@
+{
+  "kind": "singleType",
+  "collectionName": "career_pages",
+  "info": {
+    "singularName": "career-page",
+    "pluralName": "career-pages",
+    "displayName": "Career Page"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "default": "Careers"
+    },
+    "heroSubtitle": {
+      "type": "string"
+    },
+    "breadcrumb": {
+      "type": "string"
+    },
+    "heroImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "benefitsTitle": {
+      "type": "string"
+    },
+    "benefits": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.feature-card"
+    },
+    "processTitle": {
+      "type": "string"
+    },
+    "processSteps": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.feature-card"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    },
+    "formTitle": {
+      "type": "string",
+      "default": "Apply For a Position"
+    },
+    "formSubtitle": {
+      "type": "string",
+      "default": "Fill out the details below to apply for a position."
+    }
+  }
+}

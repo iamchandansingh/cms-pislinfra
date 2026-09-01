@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_shared_policy_sections",
+  "info": {
+    "displayName": "Policy Section",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "icon": {
+      "type": "string",
+      "required": true,
+      "default": "FileText"
+    },
+    "content": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}

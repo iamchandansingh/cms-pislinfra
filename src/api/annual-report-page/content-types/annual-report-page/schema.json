@@ -1,0 +1,50 @@
+{
+  "kind": "singleType",
+  "collectionName": "annual_report_pages",
+  "info": {
+    "singularName": "annual-report-page",
+    "pluralName": "annual-report-pages",
+    "displayName": "Annual Report Page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "breadcrumb": {
+      "type": "string"
+    },
+    "heroImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "headerTitle": {
+      "type": "string"
+    },
+    "headerDescription": {
+      "type": "text"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    },
+    "reports": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.report"
+    }
+  }
+}

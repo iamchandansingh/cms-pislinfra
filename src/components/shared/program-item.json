@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_shared_program_items",
+  "info": {
+    "displayName": "Program Item",
+    "icon": "clipboard-list"
+  },
+  "options": {},
+  "attributes": {
+    "title": { "type": "string" },
+    "items": { "type": "json" }
+  }
+}

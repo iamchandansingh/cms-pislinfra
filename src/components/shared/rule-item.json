@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_shared_rule_items",
+  "info": {
+    "displayName": "Rule Item",
+    "icon": "exclamation-triangle"
+  },
+  "options": {},
+  "attributes": {
+    "titleEn": { "type": "string" },
+    "descEn": { "type": "text" },
+    "descHi": { "type": "text" },
+    "imgBase64Key": { "type": "string" }
+  }
+}

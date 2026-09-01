@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "policy_pages",
+  "info": {
+    "singularName": "policy-page",
+    "pluralName": "policy-pages",
+    "displayName": "Privacy Policy Page"
+  },
+  "options": { "draftAndPublish": false },
+  "attributes": {
+    "title": { "type": "string", "required": true, "default": "Privacy Policy" },
+    "lastUpdated": { "type": "date" },
+    "heroSubtitle": { "type": "string" },
+    "breadcrumb": { "type": "string", "default": "Privacy Policy" },
+    "heroImage": { "type": "media", "multiple": false, "required": false, "allowedTypes": ["images"] },
+    
+    "sections": { "type": "component", "repeatable": true, "component": "shared.policy-section" },
+    
+    "seo": { "type": "component", "repeatable": false, "component": "shared.seo" }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_shared_nav_links",
+  "info": {
+    "displayName": "Nav Link",
+    "description": "Main navigation item (can have dropdown children)"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "href": {
+      "type": "string",
+      "required": true
+    },
+    "subLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.sub-link"
+    }
+  }
+}

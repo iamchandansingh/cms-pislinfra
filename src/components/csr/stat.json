@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_csr_stats",
+  "info": {
+    "displayName": "Stat",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "label": { "type": "string" },
+    "value": { "type": "integer" },
+    "suffix": { "type": "string" },
+    "iconName": { "type": "string" },
+    "iconColor": { "type": "string" }
+  }
+}

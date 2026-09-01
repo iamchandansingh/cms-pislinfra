@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "warehouse_pages",
+  "info": {
+    "singularName": "warehouse-page",
+    "pluralName": "warehouse-pages",
+    "displayName": "Warehouse Page",
+    "description": "Content for the Warehouse solution page"
+  },
+  "options": { "draftAndPublish": false },
+  "attributes": {
+    "title": { "type": "string", "required": true, "default": "Warehouse Contractors" },
+    "heroSubtitle": { "type": "string" },
+    "breadcrumb": { "type": "string" },
+    "heroImage": { "type": "media", "multiple": false, "required": false, "allowedTypes": ["images"] },
+    
+    "mainFeatureTitle": { "type": "string" },
+    "mainFeatureText": { "type": "richtext" },
+    "mainFeatureImage": { "type": "media", "multiple": false, "required": false, "allowedTypes": ["images"] },
+    
+    "grids": { "type": "component", "repeatable": true, "component": "shared.solution-grid" },
+    
+    "seo": { "type": "component", "repeatable": false, "component": "shared.seo" }
+  }
+}

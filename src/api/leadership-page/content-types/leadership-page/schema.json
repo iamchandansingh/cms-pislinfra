@@ -1,0 +1,56 @@
+{
+  "kind": "singleType",
+  "collectionName": "leadership_pages",
+  "info": {
+    "singularName": "leadership-page",
+    "pluralName": "leadership-pages",
+    "displayName": "Leadership Page"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": { "type": "string" },
+    "subtitle": { "type": "text" },
+    "breadcrumb": { "type": "string" },
+    "heroImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    },
+    "topLeaderName": { "type": "string" },
+    "topLeaderDesignation": { "type": "string" },
+    "topLeaderBio": { "type": "text" },
+    "topLeaderImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "topLeaderHighlights": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.highlight"
+    },
+    "executiveTitle": { "type": "string" },
+    "executiveSubtitle": { "type": "text" },
+    "executives": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.person-card"
+    },
+    "coreTeamTitle": { "type": "string" },
+    "coreTeam": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.person-card"
+    }
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "kind": "singleType",
+  "collectionName": "home_pages",
+  "info": {
+    "singularName": "home-page",
+    "pluralName": "home-pages",
+    "displayName": "Home Page (Edit Sections here)",
+    "description": "Text sections for the Home Page"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "heroTitle": {
+      "type": "string"
+    },
+    "heroSubtitle": {
+      "type": "text"
+    },
+    "aboutTitle": {
+      "type": "string"
+    },
+    "aboutSubtitle": {
+      "type": "string"
+    },
+    "aboutDesc": {
+      "type": "text"
+    },
+    "statLocations": {
+      "type": "string"
+    },
+    "statSqFt": {
+      "type": "string"
+    },
+    "statEmployees": {
+      "type": "string"
+    },
+    "statProjects": {
+      "type": "string"
+    },
+    "hseTitle": {
+      "type": "string"
+    },
+    "hseDesc": {
+      "type": "text"
+    },
+    "hseQuote": {
+      "type": "string"
+    },
+    "hseQuoteDesc": {
+      "type": "text"
+    },
+    "hsePillar1Title": {
+      "type": "string"
+    },
+    "hsePillar1Desc": {
+      "type": "text"
+    },
+    "hsePillar2Title": {
+      "type": "string"
+    },
+    "hsePillar2Desc": {
+      "type": "text"
+    },
+    "hsePillar3Title": {
+      "type": "string"
+    },
+    "hsePillar3Desc": {
+      "type": "text"
+    },
+    "ctaText": {
+      "type": "string"
+    },
+    "awardsTitle": {
+      "type": "string"
+    },
+    "clientsTitle": {
+      "type": "string"
+    },
+    "coverageTitle": {
+      "type": "string"
+    },
+    "mapMarkers": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.map-marker"
+    },
+    "hseImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

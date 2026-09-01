@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_shared_resource_items",
+  "info": {
+    "displayName": "Resource Item",
+    "icon": "file-pdf"
+  },
+  "options": {},
+  "attributes": {
+    "title": { "type": "string" },
+    "desc": { "type": "text" }
+  }
+}

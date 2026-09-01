@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "coverage_markers",
+  "info": {
+    "singularName": "coverage-marker",
+    "pluralName": "coverage-markers",
+    "displayName": "Nationwide Coverage",
+    "description": "Manage map marker pins for Ongoing & Completed projects"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "projectName": {
+      "type": "string",
+      "required": true
+    },
+    "state": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "projectType": {
+      "type": "enumeration",
+      "enum": [
+        "Ongoing",
+        "Completed"
+      ],
+      "default": "Ongoing",
+      "required": true
+    },
+    "cx": {
+      "type": "decimal",
+      "required": true
+    },
+    "cy": {
+      "type": "decimal",
+      "required": true
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

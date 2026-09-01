@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_shared_solution_grids",
+  "info": {
+    "displayName": "Solution Grid",
+    "description": "Grid of feature cards for solutions pages"
+  },
+  "options": {},
+  "attributes": {
+    "title": { "type": "string", "required": true },
+    "description": { "type": "text" },
+    "vertical": { "type": "boolean", "default": false },
+    "minWidth": { "type": "string" },
+    "cardBg": { "type": "string" },
+    "cardBorder": { "type": "string" },
+    "iconBg": { "type": "string" },
+    "iconColor": { "type": "string" },
+    "items": { "type": "component", "repeatable": true, "component": "shared.feature-card" }
+  }
+}

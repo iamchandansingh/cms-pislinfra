@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "awards",
+  "info": {
+    "singularName": "award",
+    "pluralName": "awards",
+    "displayName": "Award",
+    "description": "Awards and Certifications"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "company": { "type": "string" },
+    "title": { "type": "string", "required": true },
+    "desc": { "type": "text" },
+    "year": { "type": "string" },
+    "category": { "type": "string" },
+    "location": { "type": "string" },
+    "icon": { "type": "string" },
+    "logo": { "type": "media", "multiple": false, "allowedTypes": ["images"] }, "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "imageUrls": { "type": "json" },
+    "order": { "type": "integer", "default": 0 }
+  }
+}

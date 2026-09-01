@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_shared_seos",
+  "info": {
+    "displayName": "seo",
+    "description": "Advanced SEO metadata configuration",
+    "icon": "search"
+  },
+  "options": {},
+  "attributes": {
+    "seoTitle": { "type": "string" },
+    "seoDescription": { "type": "text" },
+    "seoKeywords": { "type": "string" },
+    "canonicalUrl": { "type": "string" },
+    "ogTitle": { "type": "string" },
+    "ogDescription": { "type": "text" },
+    "ogImage": { "type": "media", "multiple": false, "required": false, "allowedTypes": ["images"] },
+    "ogType": { "type": "string", "default": "website" },
+    "twitterTitle": { "type": "string" },
+    "twitterDescription": { "type": "text" },
+    "twitterImage": { "type": "media", "multiple": false, "required": false, "allowedTypes": ["images"] },
+    "twitterCardType": { "type": "string", "default": "summary_large_image" },
+    "schemaType": { "type": "string", "default": "WebPage" },
+    "noIndex": { "type": "boolean", "default": false },
+    "noFollow": { "type": "boolean", "default": false },
+    "structuredData": { "type": "text" },
+    "breadcrumbSchema": { "type": "boolean", "default": true },
+    "organizationSchema": { "type": "boolean", "default": false },
+    "tags": { "type": "string" }
+  }
+}
