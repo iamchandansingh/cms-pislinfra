@@ -951,8 +951,6 @@ export interface ApiCompletedProjectCompletedProject
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    cx: Schema.Attribute.Decimal;
-    cy: Schema.Attribute.Decimal;
     images: Schema.Attribute.Media<'images', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -1404,8 +1402,6 @@ export interface ApiOngoingProjectOngoingProject
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    cx: Schema.Attribute.Decimal;
-    cy: Schema.Attribute.Decimal;
     images: Schema.Attribute.Media<'images', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<

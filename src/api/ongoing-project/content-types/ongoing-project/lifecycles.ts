@@ -33,12 +33,14 @@ export default {
           filters: { projectName: { $containsi: String(result.name || "") } } as any,
         });
         if (!existing || existing.length === 0) {
+          const imgIds = Array.isArray(result.images) ? result.images.map((img: any) => img.id || img) : [];
           await strapi.documents("api::coverage-marker.coverage-marker").create({
             data: {
               projectName: result.name,
               projectType: "Ongoing",
               state: result.state,
               city: result.location || result.city,
+              images: imgIds,
               cx: null,
               cy: null,
               showOnMap: false,
