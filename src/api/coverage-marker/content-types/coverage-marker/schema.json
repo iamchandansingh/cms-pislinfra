@@ -33,11 +33,23 @@
     },
     "cx": {
       "type": "decimal",
-      "required": true
+      "required": false
     },
     "cy": {
       "type": "decimal",
-      "required": true
+      "required": false
+    },
+    "showOnMap": {
+      "type": "boolean",
+      "default": true
+    },
+    "markerStatus": {
+      "type": "enumeration",
+      "enum": [
+        "Active",
+        "Pending Alignment"
+      ],
+      "default": "Active"
     },
     "images": {
       "type": "media",

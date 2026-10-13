@@ -51,12 +51,6 @@
       "type": "component",
       "repeatable": false,
       "component": "shared.seo"
-    },
-    "cx": {
-      "type": "decimal"
-    },
-    "cy": {
-      "type": "decimal"
     }
   }
 }

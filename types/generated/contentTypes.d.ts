@@ -1030,8 +1030,8 @@ export interface ApiCoverageMarkerCoverageMarker
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    cx: Schema.Attribute.Decimal & Schema.Attribute.Required;
-    cy: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    cx: Schema.Attribute.Decimal;
+    cy: Schema.Attribute.Decimal;
     images: Schema.Attribute.Media<'images', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -1039,11 +1039,16 @@ export interface ApiCoverageMarkerCoverageMarker
       'api::coverage-marker.coverage-marker'
     > &
       Schema.Attribute.Private;
+    markerStatus: Schema.Attribute.Enumeration<
+      ['Active', 'Pending Alignment']
+    > &
+      Schema.Attribute.DefaultTo<'Active'>;
     projectName: Schema.Attribute.String & Schema.Attribute.Required;
     projectType: Schema.Attribute.Enumeration<['Ongoing', 'Completed']> &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'Ongoing'>;
     publishedAt: Schema.Attribute.DateTime;
+    showOnMap: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     state: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

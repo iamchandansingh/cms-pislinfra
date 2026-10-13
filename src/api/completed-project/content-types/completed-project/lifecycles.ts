@@ -2,6 +2,8 @@ import { exec } from 'child_process';
 import path from 'path';
 
 let syncTimeout: any = null;
+let isSyncingMarker = false;
+
 function triggerDirectSync() {
   if (syncTimeout) clearTimeout(syncTimeout);
   syncTimeout = setTimeout(() => {
@@ -22,11 +24,64 @@ function triggerDirectSync() {
 }
 
 export default {
-  async afterCreate() {
+  async afterCreate(event: any) {
+    const { result } = event;
+    if (!isSyncingMarker && result && result.name) {
+      isSyncingMarker = true;
+      try {
+        const existing = await strapi.documents("api::coverage-marker.coverage-marker").findMany({
+          filters: { projectName: { $containsi: String(result.name || "") } } as any,
+        });
+        if (!existing || existing.length === 0) {
+          await strapi.documents("api::coverage-marker.coverage-marker").create({
+            data: {
+              projectName: result.name,
+              projectType: "Completed",
+              state: result.state,
+              city: result.location || result.city,
+              cx: null,
+              cy: null,
+              showOnMap: false,
+              markerStatus: "Pending Alignment",
+            } as any,
+            status: "published",
+          });
+          strapi.log.info(`[Lifecycle] Registered new Completed Project "${result.name}" in Nationwide Coverage (Pending Alignment, showOnMap=false).`);
+        }
+      } catch (e) {
+        strapi.log.warn("[Lifecycle completed afterCreate marker sync error]:", e);
+      } finally {
+        isSyncingMarker = false;
+      }
+    }
     triggerDirectSync();
   },
 
-  async afterUpdate() {
+  async afterUpdate(event: any) {
+    const { result } = event;
+    if (!isSyncingMarker && result && result.name) {
+      isSyncingMarker = true;
+      try {
+        const existing = await strapi.documents("api::coverage-marker.coverage-marker").findMany({
+          filters: { projectName: { $containsi: String(result.name || "") } } as any,
+        });
+        if (existing && existing.length > 0) {
+          const currentMarker = existing[0];
+          await strapi.documents("api::coverage-marker.coverage-marker").update({
+            documentId: currentMarker.documentId,
+            data: {
+              state: result.state || currentMarker.state,
+              city: result.location || result.city || currentMarker.city,
+            } as any,
+            status: "published",
+          });
+        }
+      } catch (e) {
+        strapi.log.warn("[Lifecycle completed afterUpdate marker sync error]:", e);
+      } finally {
+        isSyncingMarker = false;
+      }
+    }
     triggerDirectSync();
   },
 

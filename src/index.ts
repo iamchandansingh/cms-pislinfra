@@ -46,7 +46,23 @@ const LOCATIONS: Record<string, { cx: number; cy: number }> = {
   "Kolkata": { cx: 67.0, cy: 50.0 },
   "Indore": { cx: 25.0, cy: 49.0 },
   "Bhopal": { cx: 30.0, cy: 47.0 },
-  "Visakhapatnam": { cx: 54.0, cy: 63.0 }
+  "Visakhapatnam": { cx: 54.0, cy: 63.0 },
+  "Dahej-02": { cx: 13.0, cy: 52.0 },
+  "Pataudi": { cx: 28.2, cy: 30.2 },
+  "Patli": { cx: 28.3, cy: 30.1 },
+  "Tauru": { cx: 28.4, cy: 30.4 },
+  "Farrukhnagar": { cx: 27.5, cy: 30.0 },
+  "Farukhnagar": { cx: 27.5, cy: 30.0 },
+  "Palwal": { cx: 29.8, cy: 31.2 },
+  "Khijuri": { cx: 28.1, cy: 30.6 },
+  "Luhari": { cx: 28.5, cy: 30.5 },
+  "Pathreri": { cx: 28.3, cy: 30.3 },
+  "Jamalpur": { cx: 28.2, cy: 30.4 },
+  "Manesar": { cx: 28.6, cy: 30.4 },
+  "Bilaspur": { cx: 28.4, cy: 30.6 },
+  "Dharuhera": { cx: 28.2, cy: 30.8 },
+  "Delhi-Mumbai Expressway, Nuh": { cx: 27.0, cy: 42.0 },
+  "Nuh": { cx: 27.0, cy: 42.0 }
 };
 
 const STATE_FALLBACKS: Record<string, { cx: number; cy: number }> = {
