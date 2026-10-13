@@ -7,7 +7,7 @@ export default [
       contentSecurityPolicy: {
         useDefaults: true,
         directives: {
-          'connect-src': ["'self'", 'https:'],
+          'connect-src': ["'self'", 'https:', 'http:'],
           'img-src': [
             "'self'", 
             'data:', 
@@ -29,7 +29,24 @@ export default [
       },
     },
   },
-  'strapi::cors',
+  {
+    name: 'strapi::cors',
+    config: {
+      enabled: true,
+      origin: [
+        'http://localhost:5173',
+        'http://127.0.0.1:5173',
+        'http://localhost:3000',
+        'http://127.0.0.1:3000',
+        'https://pislinfra.com',
+        'https://www.pislinfra.com',
+        '*'
+      ],
+      headers: '*',
+      methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
+      keepHeaderOnError: true,
+    },
+  },
   'strapi::poweredBy',
   'strapi::query',
   'strapi::body',

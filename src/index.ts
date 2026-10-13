@@ -1,4 +1,6 @@
 import type { Core } from '@strapi/strapi';
+import { exec } from 'child_process';
+import path from 'path';
 
 const LOCATIONS: Record<string, { cx: number; cy: number }> = {
   "Mundra": { cx: 5.0, cy: 49.0 },
@@ -166,7 +168,22 @@ export default {
         console.log('Public permissions set for all API endpoints.');
       }
 
-      // Automatic bootstrap seeding disabled to prevent duplicates
+      // 5-Minute Auto-Backup Heartbeat to Hostinger Local DB
+      const FIVE_MINUTES_MS = 5 * 60 * 1000;
+      setInterval(() => {
+        try {
+          const reactDir = path.resolve(process.cwd(), '../pislinfra-react');
+          const script = path.join(reactDir, 'scripts/syncProjectsOnly.js');
+          exec(`node "${script}"`, { cwd: reactDir }, (err, stdout, stderr) => {
+            if (!err) {
+              strapi.log.info('[5-Min-AutoBackup] Hostinger Dual DB backup successfully synced and verified.');
+            }
+          });
+        } catch (e: any) {
+          strapi.log.warn('[5-Min-AutoBackup] Heartbeat trigger error: ' + e.message);
+        }
+      }, FIVE_MINUTES_MS);
+
     } catch (err) {
       console.error('Error in bootstrap:', err);
     }
