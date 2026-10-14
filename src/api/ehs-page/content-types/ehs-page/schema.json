@@ -28,72 +28,26 @@
         "images"
       ]
     },
-    "seo": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.seo"
-    },
-    "gallery": {
-      "type": "component",
-      "repeatable": true,
-      "component": "shared.gallery-item"
-    },
     "stats": {
       "type": "component",
       "repeatable": true,
       "component": "shared.stat-item"
+    },
+    "commitmentTitle": {
+      "type": "string"
     },
     "features": {
       "type": "component",
       "repeatable": true,
       "component": "shared.feature-item"
     },
+    "philosophySectionTitle": {
+      "type": "string"
+    },
     "philosophy": {
       "type": "component",
       "repeatable": true,
       "component": "shared.philosophy-item"
-    },
-    "awards": {
-      "type": "component",
-      "repeatable": true,
-      "component": "shared.award-item"
-    },
-    "rules": {
-      "type": "component",
-      "repeatable": true,
-      "component": "shared.rule-item"
-    },
-    "resources": {
-      "type": "component",
-      "repeatable": true,
-      "component": "shared.resource-item"
-    },
-    "safetyCultureTitle": {
-      "type": "string"
-    },
-    "safetyCultureDesc": {
-      "type": "text"
-    },
-    "approaches": {
-      "type": "component",
-      "repeatable": true,
-      "component": "shared.approach-item"
-    },
-    "pillars": {
-      "type": "component",
-      "repeatable": true,
-      "component": "shared.pillar-item"
-    },
-    "programs": {
-      "type": "component",
-      "repeatable": true,
-      "component": "shared.program-item"
-    },
-    "commitmentTitle": {
-      "type": "string"
-    },
-    "philosophySectionTitle": {
-      "type": "string"
     },
     "approachesSectionTitle": {
       "type": "string"
@@ -101,23 +55,62 @@
     "approachesSectionSubtitle": {
       "type": "text"
     },
+    "approaches": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.approach-item"
+    },
     "rulesSectionTitle": {
       "type": "string"
     },
     "rulesSectionSubtitle": {
       "type": "string"
     },
+    "rules": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.rule-item"
+    },
+    "safetyCultureTitle": {
+      "type": "string"
+    },
+    "safetyCultureDesc": {
+      "type": "text"
+    },
     "pillarsSectionTitle": {
       "type": "string"
     },
+    "pillars": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.pillar-item"
+    },
     "programsSectionTitle": {
       "type": "string"
+    },
+    "programs": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.program-item"
+    },
+    "gallerySectionTitle": {
+      "type": "string"
+    },
+    "gallery": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.gallery-item"
     },
     "awardsSectionTitle": {
       "type": "string"
     },
     "awardsSectionSubtitle": {
       "type": "string"
+    },
+    "awards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.award-item"
     },
     "resourcesSectionTitle": {
       "type": "string"
@@ -128,8 +121,15 @@
     "resourcesSectionDesc": {
       "type": "text"
     },
-    "gallerySectionTitle": {
-      "type": "string"
+    "resources": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.resource-item"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
     }
   }
 }

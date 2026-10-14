@@ -457,6 +457,7 @@ export interface ApiAboutPageAboutPage extends Struct.SingleTypeSchema {
   attributes: {
     capabilities: Schema.Attribute.Component<'shared.feature-card', true>;
     capabilitiesTitle: Schema.Attribute.String;
+    companyProfile: Schema.Attribute.Component<'shared.resource-item', false>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -472,6 +473,7 @@ export interface ApiAboutPageAboutPage extends Struct.SingleTypeSchema {
     presenceDescription: Schema.Attribute.Text;
     presenceTitle: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    resources: Schema.Attribute.Component<'shared.resource-item', true>;
     seo: Schema.Attribute.Component<'shared.seo', false>;
     stats: Schema.Attribute.Component<'shared.feature-card', true>;
     subtitle: Schema.Attribute.String;

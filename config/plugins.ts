@@ -2,6 +2,8 @@ export default ({ env }: { env: any }) => ({
   upload: {
     config: {
       provider: '@strapi/provider-upload-aws-s3',
+      responsiveDimensions: false,
+      sizeLimit: 100 * 1024 * 1024,
       providerOptions: {
         baseUrl: 'https://pub-eeb28a3c927b4ae1b67e3e8e731ee105.r2.dev',
         rootPath: '',

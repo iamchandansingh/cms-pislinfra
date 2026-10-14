@@ -64,6 +64,16 @@
     },
     "presenceDescription": {
       "type": "text"
+    },
+    "companyProfile": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.resource-item"
+    },
+    "resources": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.resource-item"
     }
   }
 }

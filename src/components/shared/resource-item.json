@@ -2,11 +2,36 @@
   "collectionName": "components_shared_resource_items",
   "info": {
     "displayName": "Resource Item",
-    "icon": "file-pdf"
+    "icon": "file-pdf",
+    "description": "Downloadable safety documents, presentations and policies"
   },
   "options": {},
   "attributes": {
-    "title": { "type": "string" },
-    "desc": { "type": "text" }
+    "title": {
+      "type": "string"
+    },
+    "desc": {
+      "type": "text"
+    },
+    "file": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "files",
+        "images"
+      ]
+    },
+    "coverImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "fileUrl": {
+      "type": "string"
+    }
   }
 }

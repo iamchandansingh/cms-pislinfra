@@ -183,25 +183,108 @@ export default {
         });
         console.log('Public permissions set for all API endpoints.');
       }
-
-      // 5-Minute Auto-Backup Heartbeat to Hostinger Local DB
-      const FIVE_MINUTES_MS = 5 * 60 * 1000;
-      setInterval(() => {
-        try {
-          const reactDir = path.resolve(process.cwd(), '../pislinfra-react');
-          const script = path.join(reactDir, 'scripts/syncProjectsOnly.js');
-          exec(`node "${script}"`, { cwd: reactDir }, (err, stdout, stderr) => {
-            if (!err) {
-              strapi.log.info('[5-Min-AutoBackup] Hostinger Dual DB backup successfully synced and verified.');
-            }
-          });
-        } catch (e: any) {
-          strapi.log.warn('[5-Min-AutoBackup] Heartbeat trigger error: ' + e.message);
-        }
-      }, FIVE_MINUTES_MS);
-
     } catch (err) {
       console.error('Error in bootstrap:', err);
     }
+
+    // FastSave Optimizer: Eliminate 100s save delay by skipping unchanged components
+    strapi.documents.use(async (context: any, next: any) => {
+      if (context.uid === 'api::ehs-page.ehs-page' && context.action === 'update') {
+        if (typeof (global as any).clearEhsCache === 'function') {
+          (global as any).clearEhsCache();
+        }
+        const data = context.params?.data;
+        if (data && typeof data === 'object') {
+          try {
+            const currentDoc: any = await strapi.documents('api::ehs-page.ehs-page').findFirst({
+              populate: {
+                heroImage: true,
+                stats: true,
+                features: true,
+                philosophy: { populate: { image: true } },
+                approaches: true,
+                rules: true,
+                pillars: true,
+                programs: true,
+                gallery: { populate: { image: true } },
+                awards: { populate: { image: true } },
+                resources: { populate: { file: true, coverImage: true } },
+                seo: true,
+              }
+            });
+
+            if (currentDoc) {
+              const componentKeys = [
+                'stats', 'features', 'philosophy', 'approaches',
+                'rules', 'pillars', 'programs', 'gallery', 'awards', 'resources'
+              ];
+
+              const skipped: string[] = [];
+              const updated: string[] = [];
+
+              for (const key of componentKeys) {
+                if (Array.isArray(data[key]) && Array.isArray(currentDoc[key])) {
+                  if (areComponentsIdentical(data[key], currentDoc[key])) {
+                    delete data[key];
+                    skipped.push(key);
+                  } else {
+                    updated.push(key);
+                  }
+                }
+              }
+
+              strapi.log.info(`[FastSave Optimizer] Updating: [${updated.join(', ') || 'scalars only'}]. Skipped identical: [${skipped.join(', ')}]`);
+            }
+          } catch (diffErr) {
+            strapi.log.warn('[FastSave Optimizer] Diff error, falling back to full update:', diffErr);
+          }
+        }
+      }
+      return next();
+    });
   },
 };
+
+function getMediaId(m: any): any {
+  if (!m) return null;
+  if (typeof m === 'number') return m;
+  if (typeof m === 'string') return m;
+  if (typeof m === 'object') return m.id || m.documentId || null;
+  return null;
+}
+
+function areComponentsIdentical(incoming: any[], existing: any[]): boolean {
+  if (incoming.length !== existing.length) return false;
+  for (let i = 0; i < incoming.length; i++) {
+    const inc = incoming[i];
+    const ext = existing[i];
+    if (!inc || !ext) return false;
+
+    const keys = Object.keys(inc);
+    for (const key of keys) {
+      if (['__temp_key__', '__component', 'documentId', 'id'].includes(key)) continue;
+
+      const valA = inc[key];
+      const valB = ext[key];
+
+      // Media fields
+      if (['image', 'file', 'coverImage'].includes(key)) {
+        const idA = getMediaId(valA);
+        const idB = getMediaId(valB);
+        if (idA !== idB && String(idA || '') !== String(idB || '')) {
+          return false;
+        }
+        continue;
+      }
+
+      // Primitive fields
+      if (typeof valA !== 'object' && typeof valB !== 'object') {
+        if (String(valA ?? '') !== String(valB ?? '')) {
+          return false;
+        }
+        continue;
+      }
+    }
+  }
+  return true;
+}

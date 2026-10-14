@@ -266,11 +266,15 @@ export interface SharedReport extends Struct.ComponentSchema {
 export interface SharedResourceItem extends Struct.ComponentSchema {
   collectionName: 'components_shared_resource_items';
   info: {
+    description: 'Downloadable safety documents, presentations and policies';
     displayName: 'Resource Item';
     icon: 'file-pdf';
   };
   attributes: {
+    coverImage: Schema.Attribute.Media<'images'>;
     desc: Schema.Attribute.Text;
+    file: Schema.Attribute.Media<'files' | 'images'>;
+    fileUrl: Schema.Attribute.String;
     title: Schema.Attribute.String;
   };
 }
