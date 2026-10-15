@@ -92,6 +92,56 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "capabilitiesTitle": {
+      "type": "string"
+    },
+    "legacyYears": {
+      "type": "string"
+    },
+    "statsDesc": {
+      "type": "text"
+    },
+    "statSpaceSqFt": {
+      "type": "string"
+    },
+    "statMicroMarkets": {
+      "type": "string"
+    },
+    "statPipelineSqFt": {
+      "type": "string"
+    },
+    "statVisionaries": {
+      "type": "string"
+    },
+    "stat1Value": {
+      "type": "string"
+    },
+    "stat1Label": {
+      "type": "string"
+    },
+    "stat2Value": {
+      "type": "string"
+    },
+    "stat2Label": {
+      "type": "string"
+    },
+    "stat3Value": {
+      "type": "string"
+    },
+    "stat3Label": {
+      "type": "string"
+    },
+    "stat4Value": {
+      "type": "string"
+    },
+    "stat4Label": {
+      "type": "string"
+    },
+    "stats": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.stat-item"
     }
   }
 }

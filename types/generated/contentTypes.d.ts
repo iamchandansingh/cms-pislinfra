@@ -1241,6 +1241,7 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     aboutSubtitle: Schema.Attribute.String;
     aboutTitle: Schema.Attribute.String;
     awardsTitle: Schema.Attribute.String;
+    capabilitiesTitle: Schema.Attribute.String;
     clientsTitle: Schema.Attribute.String;
     coverageTitle: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
@@ -1260,6 +1261,7 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     hseQuote: Schema.Attribute.String;
     hseQuoteDesc: Schema.Attribute.Text;
     hseTitle: Schema.Attribute.String;
+    legacyYears: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1268,10 +1270,24 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
       Schema.Attribute.Private;
     mapMarkers: Schema.Attribute.Component<'shared.map-marker', true>;
     publishedAt: Schema.Attribute.DateTime;
+    stat1Label: Schema.Attribute.String;
+    stat1Value: Schema.Attribute.String;
+    stat2Label: Schema.Attribute.String;
+    stat2Value: Schema.Attribute.String;
+    stat3Label: Schema.Attribute.String;
+    stat3Value: Schema.Attribute.String;
+    stat4Label: Schema.Attribute.String;
+    stat4Value: Schema.Attribute.String;
     statEmployees: Schema.Attribute.String;
     statLocations: Schema.Attribute.String;
+    statMicroMarkets: Schema.Attribute.String;
+    statPipelineSqFt: Schema.Attribute.String;
     statProjects: Schema.Attribute.String;
+    stats: Schema.Attribute.Component<'shared.stat-item', true>;
+    statsDesc: Schema.Attribute.Text;
+    statSpaceSqFt: Schema.Attribute.String;
     statSqFt: Schema.Attribute.String;
+    statVisionaries: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

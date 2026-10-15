@@ -182,6 +182,37 @@ export default {
           }
         });
         console.log('Public permissions set for all API endpoints.');
+    try {
+      const homeDoc = await strapi.documents("api::home-page.home-page").findFirst();
+      if (homeDoc) {
+        const patch: any = {};
+        if (!homeDoc.aboutTitle) patch.aboutTitle = "About Our Expertise";
+        if (!homeDoc.aboutSubtitle) patch.aboutSubtitle = "Building Global-Standard Industrial & Logistics Parks.";
+        if (!homeDoc.capabilitiesTitle) patch.capabilitiesTitle = "Our Strategic Capabilities.";
+        if (!homeDoc.stat1Value) patch.stat1Value = "25+";
+        if (!homeDoc.stat1Label) patch.stat1Label = "Locations Covered";
+        if (!homeDoc.stat2Value) patch.stat2Value = "16+";
+        if (!homeDoc.stat2Label) patch.stat2Label = "Million Sq. Ft. Constructed";
+        if (!homeDoc.stat3Value) patch.stat3Value = "600+";
+        if (!homeDoc.stat3Label) patch.stat3Label = "Employee Strength";
+        if (!homeDoc.stat4Value) patch.stat4Value = "10+";
+        if (!homeDoc.stat4Label) patch.stat4Label = "Upcoming Projects";
+        if (!homeDoc.legacyYears) patch.legacyYears = "17";
+        if (!homeDoc.statsDesc) patch.statsDesc = "When you choose PISL, you gain a partner dedicated to understanding your business needs to support your growth — because your success is our relentless pursuit.";
+        if (!homeDoc.hseTitle) patch.hseTitle = "Health, Safety & Environment";
+        
+        if (Object.keys(patch).length > 0) {
+          await strapi.documents("api::home-page.home-page").update({
+            documentId: homeDoc.documentId,
+            data: patch
+          });
+          console.log("[Bootstrap] Seeded default home-page sections in CMS:", Object.keys(patch));
+        }
+      }
+    } catch (homeErr) {
+      console.warn("[Bootstrap] Home-page seed note:", homeErr);
+    }
+
       }
     } catch (err) {
       console.error('Error in bootstrap:', err);
