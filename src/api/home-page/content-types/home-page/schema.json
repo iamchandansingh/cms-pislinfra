@@ -17,6 +17,23 @@
     "heroSubtitle": {
       "type": "text"
     },
+    "heroImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "heroVideo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "videos",
+        "files"
+      ]
+    },
     "aboutTitle": {
       "type": "string"
     },

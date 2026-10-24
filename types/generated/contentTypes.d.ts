@@ -1136,6 +1136,7 @@ export interface ApiEhsPageEhsPage extends Struct.SingleTypeSchema {
     programsSectionTitle: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     resources: Schema.Attribute.Component<'shared.resource-item', true>;
+    resourcesCoverImage: Schema.Attribute.Media<'images'>;
     resourcesSectionDesc: Schema.Attribute.Text;
     resourcesSectionSubtitle: Schema.Attribute.String;
     resourcesSectionTitle: Schema.Attribute.String;
@@ -1188,6 +1189,51 @@ export interface ApiFooterFooter extends Struct.SingleTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     resourceLinks: Schema.Attribute.Component<'shared.footer-link', true>;
     solutionLinks: Schema.Attribute.Component<'shared.footer-link', true>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiGovernancePageGovernancePage
+  extends Struct.SingleTypeSchema {
+  collectionName: 'governance_pages';
+  info: {
+    description: 'Company policies and documents';
+    displayName: 'Company Policy';
+    pluralName: 'governance-pages';
+    singularName: 'governance-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    breadcrumbLabel: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    heroCoverImage: Schema.Attribute.Media<'images'>;
+    heroDescription: Schema.Attribute.Text & Schema.Attribute.Required;
+    heroImageAlt: Schema.Attribute.String;
+    heroTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    internalName: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Company Policy'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::governance-page.governance-page'
+    > &
+      Schema.Attribute.Private;
+    pageDescription: Schema.Attribute.Text;
+    pageTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    policies: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::policy-document.policy-document'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    seo: Schema.Attribute.Component<'shared.seo', false>;
+    slug: Schema.Attribute.UID<'pageTitle'> & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1248,8 +1294,10 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     ctaText: Schema.Attribute.String;
+    heroImage: Schema.Attribute.Media<'images'>;
     heroSubtitle: Schema.Attribute.Text;
     heroTitle: Schema.Attribute.String;
+    heroVideo: Schema.Attribute.Media<'videos' | 'files'>;
     hseDesc: Schema.Attribute.Text;
     hseImage: Schema.Attribute.Media<'images'>;
     hsePillar1Desc: Schema.Attribute.Text;
@@ -1440,6 +1488,52 @@ export interface ApiOngoingProjectOngoingProject
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPolicyDocumentPolicyDocument
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'policy_documents';
+  info: {
+    description: 'Downloadable corporate policies shown on the Policies & Governance page';
+    displayName: 'Policies';
+    pluralName: 'policy-documents';
+    singularName: 'policy-document';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    accentType: Schema.Attribute.Enumeration<['navy', 'orange', 'green']> &
+      Schema.Attribute.DefaultTo<'navy'>;
+    buttonName: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Download PDF'>;
+    coverImage: Schema.Attribute.Media<'images'>;
+    coverImageAlt: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    displayOrder: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<0>;
+    documentLabel: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'PDF Document'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::policy-document.policy-document'
+    > &
+      Schema.Attribute.Private;
+    pdfFile: Schema.Attribute.Media<'files'>;
+    publishedAt: Schema.Attribute.DateTime;
+    shortDescription: Schema.Attribute.Text & Schema.Attribute.Required;
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedLabel: Schema.Attribute.String;
   };
 }
 
@@ -2128,12 +2222,14 @@ declare module '@strapi/strapi' {
       'api::csr-page.csr-page': ApiCsrPageCsrPage;
       'api::ehs-page.ehs-page': ApiEhsPageEhsPage;
       'api::footer.footer': ApiFooterFooter;
+      'api::governance-page.governance-page': ApiGovernancePageGovernancePage;
       'api::header.header': ApiHeaderHeader;
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::job-opening.job-opening': ApiJobOpeningJobOpening;
       'api::leadership-page.leadership-page': ApiLeadershipPageLeadershipPage;
       'api::ongoing-page.ongoing-page': ApiOngoingPageOngoingPage;
       'api::ongoing-project.ongoing-project': ApiOngoingProjectOngoingProject;
+      'api::policy-document.policy-document': ApiPolicyDocumentPolicyDocument;
       'api::policy-page.policy-page': ApiPolicyPagePolicyPage;
       'api::solution-page.solution-page': ApiSolutionPageSolutionPage;
       'api::top-header.top-header': ApiTopHeaderTopHeader;

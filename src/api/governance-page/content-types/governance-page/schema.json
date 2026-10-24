@@ -1,0 +1,30 @@
+{
+  "kind": "singleType",
+  "collectionName": "governance_pages",
+  "info": {
+    "singularName": "governance-page",
+    "pluralName": "governance-pages",
+    "displayName": "Company Policy",
+    "description": "Company policies and documents"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "internalName": { "type": "string", "required": true, "default": "Company Policy" },
+    "pageTitle": { "type": "string", "required": true },
+    "slug": { "type": "uid", "targetField": "pageTitle", "required": true },
+    "pageDescription": { "type": "text" },
+    "breadcrumbLabel": { "type": "string" },
+    "heroTitle": { "type": "string", "required": true },
+    "heroDescription": { "type": "text", "required": true },
+    "heroCoverImage": { "type": "media", "multiple": false, "required": false, "allowedTypes": ["images"] },
+    "heroImageAlt": { "type": "string" },
+    "policies": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::policy-document.policy-document"
+    },
+    "seo": { "type": "component", "repeatable": false, "component": "shared.seo" }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "policy_documents",
+  "info": {
+    "singularName": "policy-document",
+    "pluralName": "policy-documents",
+    "displayName": "Policies",
+    "description": "Downloadable corporate policies shown on the Policies & Governance page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": { "type": "string", "required": true },
+    "slug": { "type": "uid", "targetField": "title", "required": true },
+    "shortDescription": { "type": "text", "required": true },
+    "coverImage": { "type": "media", "multiple": false, "required": false, "allowedTypes": ["images"] },
+    "coverImageAlt": { "type": "string" },
+    "pdfFile": { "type": "media", "multiple": false, "required": false, "allowedTypes": ["files"] },
+    "buttonName": { "type": "string", "required": true, "default": "Download PDF" },
+    "documentLabel": { "type": "string", "default": "PDF Document" },
+    "displayOrder": { "type": "integer", "required": true, "default": 0 },
+    "accentType": { "type": "enumeration", "enum": ["navy", "orange", "green"], "default": "navy" },
+    "updatedLabel": { "type": "string" }
+  }
+}

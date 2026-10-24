@@ -121,6 +121,14 @@
     "resourcesSectionDesc": {
       "type": "text"
     },
+    "resourcesCoverImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
     "resources": {
       "type": "component",
       "repeatable": true,

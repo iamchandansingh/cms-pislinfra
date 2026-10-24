@@ -1,6 +1,7 @@
 import type { Core } from '@strapi/strapi';
 import { exec } from 'child_process';
 import path from 'path';
+import { registerGovernanceValidation, seedGovernanceContent } from './api/governance-page/setup';
 
 const LOCATIONS: Record<string, { cx: number; cy: number }> = {
   "Mundra": { cx: 5.0, cy: 49.0 },
@@ -142,6 +143,7 @@ export default {
       name: "move-to-completed",
       type: "string",
     });
+    registerGovernanceValidation(strapi);
   },
 
   async bootstrap({ strapi }: { strapi: Core.Strapi }) {
@@ -175,6 +177,8 @@ export default {
             'api::ongoing-page': { controllers: { 'ongoing-page': { find: { enabled: true }, findOne: { enabled: true } } } },
             'api::ongoing-project': { controllers: { 'ongoing-project': { find: { enabled: true }, findOne: { enabled: true }, create: { enabled: true }, update: { enabled: true }, delete: { enabled: true }, moveToCompleted: { enabled: true } } } },
             'api::policy-page': { controllers: { 'policy-page': { find: { enabled: true }, findOne: { enabled: true } } } },
+            'api::governance-page': { controllers: { 'governance-page': { find: { enabled: true } } } },
+            'api::policy-document': { controllers: { 'policy-document': { find: { enabled: true }, findOne: { enabled: true } } } },
             'api::solution-page': { controllers: { 'solution-page': { find: { enabled: true }, findOne: { enabled: true } } } },
             'api::top-header': { controllers: { 'top-header': { find: { enabled: true }, findOne: { enabled: true } } } },
             'api::warehouse-page': { controllers: { 'warehouse-page': { find: { enabled: true }, findOne: { enabled: true } } } },
@@ -218,6 +222,132 @@ export default {
       console.error('Error in bootstrap:', err);
     }
 
+    try {
+      await seedGovernanceContent(strapi);
+    } catch (governanceErr) {
+      strapi.log.warn('[Bootstrap] Policies & Governance seed note:', governanceErr);
+    }
+
+    // Automatically inject resourcesCoverImage into Strapi Content Manager Edit View layout
+    try {
+      const cmStore = strapi.store({ type: 'plugin', name: 'content_manager' });
+      let config: any = await cmStore.get({ key: 'configuration_content_types::api::ehs-page.ehs-page' });
+      if (config && config.layouts && Array.isArray(config.layouts.edit)) {
+        let hasField = false;
+        for (const row of config.layouts.edit) {
+          if (Array.isArray(row) && row.some((col: any) => col.name === 'resourcesCoverImage')) {
+            hasField = true;
+            break;
+          }
+        }
+        if (!hasField) {
+          let insertIdx = -1;
+          for (let i = 0; i < config.layouts.edit.length; i++) {
+            const row = config.layouts.edit[i];
+            if (Array.isArray(row) && row.some((col: any) => col.name === 'resourcesSectionDesc' || col.name === 'resources')) {
+              insertIdx = i;
+              break;
+            }
+          }
+          const newCol = [{ name: 'resourcesCoverImage', size: 12 }];
+          if (insertIdx !== -1) {
+            config.layouts.edit.splice(insertIdx + 1, 0, newCol);
+          } else {
+            config.layouts.edit.push(newCol);
+          }
+          if (!config.metadatas) config.metadatas = {};
+          config.metadatas.resourcesCoverImage = {
+            edit: {
+              label: '12.4 Resources Section Cover Image',
+              description: 'Cover image displayed on the left of Downloadable Resources',
+              placeholder: '',
+              visible: true,
+              editable: true
+            },
+            list: {
+              label: 'Resources Cover Image',
+              searchable: false,
+              sortable: false
+            }
+          };
+          if (!config.metadatas.resources) config.metadatas.resources = {};
+          config.metadatas.resources.edit = {
+            label: '12.5 Downloadable Policies (4)',
+            description: 'Corporate policies with View & Download PDF actions',
+            placeholder: '',
+            visible: true,
+            editable: true
+          };
+          await cmStore.set({ key: 'configuration_content_types::api::ehs-page.ehs-page', value: config });
+          strapi.log.info('[Bootstrap] Successfully added resourcesCoverImage to Content Manager layout via strapi.store!');
+        }
+      }
+    } catch (cmStoreErr) {
+      strapi.log.warn('[Bootstrap] strapi.store config update note:', cmStoreErr);
+    }
+
+    try {
+      const tableName = (await strapi.db.connection.schema.hasTable('strapi_core_store_settings'))
+        ? 'strapi_core_store_settings'
+        : (await strapi.db.connection.schema.hasTable('core_store')) ? 'core_store' : null;
+      if (tableName) {
+        const rows = await strapi.db.connection(tableName).whereILike('key', '%content_manager%ehs-page%');
+        for (const row of rows) {
+          let val = typeof row.value === 'string' ? JSON.parse(row.value) : row.value;
+          if (val && val.layouts && Array.isArray(val.layouts.edit)) {
+            let hasField = false;
+            for (const r of val.layouts.edit) {
+              if (Array.isArray(r) && r.some((c: any) => c.name === 'resourcesCoverImage')) {
+                hasField = true; break;
+              }
+            }
+            if (!hasField) {
+              let insertIdx = -1;
+              for (let i = 0; i < val.layouts.edit.length; i++) {
+                const r = val.layouts.edit[i];
+                if (Array.isArray(r) && r.some((c: any) => c.name === 'resourcesSectionDesc' || c.name === 'resources')) {
+                  insertIdx = i; break;
+                }
+              }
+              const newCol = [{ name: 'resourcesCoverImage', size: 12 }];
+              if (insertIdx !== -1) {
+                val.layouts.edit.splice(insertIdx + 1, 0, newCol);
+              } else {
+                val.layouts.edit.push(newCol);
+              }
+              if (!val.metadatas) val.metadatas = {};
+              val.metadatas.resourcesCoverImage = {
+                edit: {
+                  label: '12.4 Resources Section Cover Image',
+                  description: 'Cover image displayed on the left of Downloadable Resources',
+                  placeholder: '',
+                  visible: true,
+                  editable: true
+                },
+                list: {
+                  label: 'Resources Cover Image',
+                  searchable: false,
+                  sortable: false
+                }
+              };
+              if (!val.metadatas.resources) val.metadatas.resources = {};
+              val.metadatas.resources.edit = {
+                label: '12.5 Downloadable Policies (4)',
+                description: 'Corporate policies with View & Download PDF actions',
+                placeholder: '',
+                visible: true,
+                editable: true
+              };
+              await strapi.db.connection(tableName).where('id', row.id).update({ value: JSON.stringify(val) });
+              strapi.log.info(`[Bootstrap] Updated ${tableName} layout for ehs-page!`);
+            }
+          }
+        }
+      }
+    } catch (e) {
+      strapi.log.warn('[Bootstrap] Layout table update note:', e);
+    }
+
     // FastSave Optimizer: Eliminate 100s save delay by skipping unchanged components
     strapi.documents.use(async (context: any, next: any) => {
       if (context.uid === 'api::ehs-page.ehs-page' && context.action === 'update') {
@@ -240,6 +370,7 @@ export default {
                 gallery: { populate: { image: true } },
                 awards: { populate: { image: true } },
                 resources: { populate: { file: true, coverImage: true } },
+                resourcesCoverImage: true,
                 seo: true,
               }
             });
@@ -273,6 +404,70 @@ export default {
       }
       return next();
     });
+
+    // Real-Time 2-Second Auto-Sync Dispatcher
+    strapi.documents.use(async (context: any, next: any) => {
+      const result = await next();
+      if (
+        context.uid &&
+        context.uid.startsWith('api::') &&
+        ['create', 'update', 'delete', 'publish', 'unpublish', 'discardDraft'].includes(context.action)
+      ) {
+        try {
+          fetch('http://127.0.0.1:5174/api/webhook', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              event: `entry.${context.action}`,
+              uid: context.uid,
+              action: context.action,
+              documentId: context.params?.documentId || result?.documentId,
+              entry: result,
+              timestamp: Date.now()
+            }),
+            signal: AbortSignal.timeout(600)
+          }).catch(() => {});
+        } catch (e) {}
+      }
+      return result;
+    });
+
+    // File upload real-time dispatcher
+    try {
+      strapi.db.lifecycles.subscribe({
+        models: ['plugin::upload.file'],
+        async afterCreate(event: any) {
+          try {
+            fetch('http://127.0.0.1:5174/api/webhook', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                event: 'media.create',
+                model: 'file',
+                entry: event.result,
+                timestamp: Date.now()
+              }),
+              signal: AbortSignal.timeout(600)
+            }).catch(() => {});
+          } catch (e) {}
+        },
+        async afterUpdate(event: any) {
+          try {
+            fetch('http://127.0.0.1:5174/api/webhook', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                event: 'media.update',
+                model: 'file',
+                entry: event.result,
+                timestamp: Date.now()
+              }),
+              signal: AbortSignal.timeout(600)
+            }).catch(() => {});
+          } catch (e) {}
+        }
+      });
+    } catch (e) {}
   },
 };
 

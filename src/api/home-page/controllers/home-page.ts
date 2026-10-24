@@ -8,6 +8,8 @@ export default factories.createCoreController("api::home-page.home-page", ({ str
         stats: true,
         hseImage: true,
         mapMarkers: true,
+        heroImage: true,
+        heroVideo: true,
         ...(typeof ctx.query?.populate === "object" ? ctx.query.populate : {}),
       },
     };
