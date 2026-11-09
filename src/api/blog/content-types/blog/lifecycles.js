@@ -1,3 +1,5 @@
+const http = require('http');
+
 const slugify = (str) =>
   (str || '')
     .toLowerCase()
@@ -5,6 +7,31 @@ const slugify = (str) =>
     .replace(/[^\w\s-]/g, '')
     .replace(/[\s_-]+/g, '-')
     .replace(/^-+|-+$/g, '');
+
+const notifySyncWebhook = (action, result) => {
+  try {
+    const payload = JSON.stringify({
+      uid: 'api::blog.blog',
+      model: 'blog',
+      action: action,
+      entry: result
+    });
+    const req = http.request({
+      hostname: '127.0.0.1',
+      port: 5174,
+      path: '/api/webhook',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Content-Length': Buffer.byteLength(payload)
+      },
+      timeout: 2000
+    });
+    req.on('error', () => {});
+    req.write(payload);
+    req.end();
+  } catch (e) {}
+};
 
 module.exports = {
   async beforeCreate(event) {
@@ -23,7 +50,7 @@ module.exports = {
 
     // 3. Auto-populate Author if empty
     if (!data.author) {
-      data.author = { name: "Pislinfra Team" };
+      data.author = 'PISL Team';
     }
 
     // 4. Auto-populate SEO from 1-Time Title, Excerpt & Featured Image
@@ -35,7 +62,7 @@ module.exports = {
       data.seo.seoTitle = `${data.title} | Pislinfra`;
     }
 
-    const desc = data.excerpt || data.title || "Pislinfra Industrial & Infrastructure Excellence";
+    const desc = data.excerpt || data.title || 'Pislinfra Industrial & Infrastructure Excellence';
     if (!data.seo.seoDescription) {
       data.seo.seoDescription = desc;
     }
@@ -75,6 +102,15 @@ module.exports = {
       data.slug = slugify(data.title);
     }
 
+    // Ensure publishDate is never null when updating or publishing
+    if (data.publishDate === null || data.publishDate === '') {
+      data.publishDate = new Date().toISOString().split('T')[0];
+    }
+
+    if (data.author === null || data.author === '') {
+      data.author = 'PISL Team';
+    }
+
     if (data.seo && data.featuredImage) {
       if (!data.seo.ogImage) {
         data.seo.ogImage = data.featuredImage;
@@ -83,5 +119,17 @@ module.exports = {
         data.seo.twitterImage = data.featuredImage;
       }
     }
+  },
+
+  async afterCreate(event) {
+    notifySyncWebhook('create', event.result);
+  },
+
+  async afterUpdate(event) {
+    notifySyncWebhook('update', event.result);
+  },
+
+  async afterDelete(event) {
+    notifySyncWebhook('delete', event.result);
   }
 };

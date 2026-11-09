@@ -461,6 +461,10 @@ export interface ApiAboutPageAboutPage extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    focusKeywords: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 500;
+      }>;
     heroImage: Schema.Attribute.Media<'images'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -468,10 +472,22 @@ export interface ApiAboutPageAboutPage extends Struct.SingleTypeSchema {
       'api::about-page.about-page'
     > &
       Schema.Attribute.Private;
+    metaDescription: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 320;
+      }>;
+    metaTitle: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 100;
+      }>;
     overviewText: Schema.Attribute.RichText;
     overviewTitle: Schema.Attribute.String;
     presenceDescription: Schema.Attribute.Text;
     presenceTitle: Schema.Attribute.String;
+    primaryKeyword: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 120;
+      }>;
     publishedAt: Schema.Attribute.DateTime;
     resources: Schema.Attribute.Component<'shared.resource-item', true>;
     seo: Schema.Attribute.Component<'shared.seo', false>;
@@ -503,6 +519,10 @@ export interface ApiAnnualReportPageAnnualReportPage
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    focusKeywords: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 500;
+      }>;
     headerDescription: Schema.Attribute.Text;
     headerTitle: Schema.Attribute.String;
     heroImage: Schema.Attribute.Media<'images'>;
@@ -512,6 +532,18 @@ export interface ApiAnnualReportPageAnnualReportPage
       'api::annual-report-page.annual-report-page'
     > &
       Schema.Attribute.Private;
+    metaDescription: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 320;
+      }>;
+    metaTitle: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 100;
+      }>;
+    primaryKeyword: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 120;
+      }>;
     publishedAt: Schema.Attribute.DateTime;
     reports: Schema.Attribute.Component<'shared.report', true>;
     seo: Schema.Attribute.Component<'shared.seo', false>;
@@ -577,6 +609,10 @@ export interface ApiAwardsPageAwardsPage extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    focusKeywords: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 500;
+      }>;
     heroImage: Schema.Attribute.Media<'images'>;
     items: Schema.Attribute.Component<'shared.award-cert-item', true>;
     journeyDesc: Schema.Attribute.Text;
@@ -588,8 +624,20 @@ export interface ApiAwardsPageAwardsPage extends Struct.SingleTypeSchema {
       'api::awards-page.awards-page'
     > &
       Schema.Attribute.Private;
+    metaDescription: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 320;
+      }>;
+    metaTitle: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 100;
+      }>;
     milestonesKicker: Schema.Attribute.String;
     milestonesTitle: Schema.Attribute.String;
+    primaryKeyword: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 120;
+      }>;
     projectsDelivered: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
     seo: Schema.Attribute.Component<'shared.seo', false>;
@@ -619,6 +667,10 @@ export interface ApiBlogPageBlogPage extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    focusKeywords: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 500;
+      }>;
     heroBreadcrumb: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'Blog'>;
@@ -635,6 +687,18 @@ export interface ApiBlogPageBlogPage extends Struct.SingleTypeSchema {
       'api::blog-page.blog-page'
     > &
       Schema.Attribute.Private;
+    metaDescription: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 320;
+      }>;
+    metaTitle: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 100;
+      }>;
+    primaryKeyword: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 120;
+      }>;
     publishedAt: Schema.Attribute.DateTime;
     seo: Schema.Attribute.Component<'shared.seo', false>;
     updatedAt: Schema.Attribute.DateTime;
@@ -709,6 +773,10 @@ export interface ApiCareerPageCareerPage extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    focusKeywords: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 500;
+      }>;
     formSubtitle: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'Fill out the details below to apply for a position.'>;
     formTitle: Schema.Attribute.String &
@@ -721,6 +789,18 @@ export interface ApiCareerPageCareerPage extends Struct.SingleTypeSchema {
       'api::career-page.career-page'
     > &
       Schema.Attribute.Private;
+    metaDescription: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 320;
+      }>;
+    metaTitle: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 100;
+      }>;
+    primaryKeyword: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 120;
+      }>;
     processSteps: Schema.Attribute.Component<'shared.feature-card', true>;
     processTitle: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
@@ -755,6 +835,10 @@ export interface ApiCaseStudyPageCaseStudyPage extends Struct.SingleTypeSchema {
     ctaButtonText: Schema.Attribute.String;
     ctaSubtitle: Schema.Attribute.String;
     ctaTitle: Schema.Attribute.String;
+    focusKeywords: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 500;
+      }>;
     heroBreadcrumb: Schema.Attribute.String;
     heroImage: Schema.Attribute.Media<'images'>;
     heroSubtitle: Schema.Attribute.String;
@@ -765,6 +849,18 @@ export interface ApiCaseStudyPageCaseStudyPage extends Struct.SingleTypeSchema {
       'api::case-study-page.case-study-page'
     > &
       Schema.Attribute.Private;
+    metaDescription: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 320;
+      }>;
+    metaTitle: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 100;
+      }>;
+    primaryKeyword: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 120;
+      }>;
     publishedAt: Schema.Attribute.DateTime;
     seo: Schema.Attribute.Component<'shared.seo', false>;
     trustedClients: Schema.Attribute.Relation<
@@ -916,6 +1012,10 @@ export interface ApiCompletedPageCompletedPage extends Struct.SingleTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
+    focusKeywords: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 500;
+      }>;
     heroBreadcrumb: Schema.Attribute.String;
     heroImage: Schema.Attribute.Media<'images'>;
     heroSubtitle: Schema.Attribute.String;
@@ -926,6 +1026,18 @@ export interface ApiCompletedPageCompletedPage extends Struct.SingleTypeSchema {
       'api::completed-page.completed-page'
     > &
       Schema.Attribute.Private;
+    metaDescription: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 320;
+      }>;
+    metaTitle: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 100;
+      }>;
+    primaryKeyword: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 120;
+      }>;
     publishedAt: Schema.Attribute.DateTime;
     seo: Schema.Attribute.Component<'shared.seo', false>;
     updatedAt: Schema.Attribute.DateTime;
@@ -991,6 +1103,10 @@ export interface ApiContactPageContactPage extends Struct.SingleTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     email: Schema.Attribute.String;
+    focusKeywords: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 500;
+      }>;
     heroImage: Schema.Attribute.Media<'images'>;
     heroSubtitle: Schema.Attribute.String;
     heroTitle: Schema.Attribute.String;
@@ -1004,7 +1120,19 @@ export interface ApiContactPageContactPage extends Struct.SingleTypeSchema {
     > &
       Schema.Attribute.Private;
     mapUrl: Schema.Attribute.String;
+    metaDescription: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 320;
+      }>;
+    metaTitle: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 100;
+      }>;
     phone: Schema.Attribute.String;
+    primaryKeyword: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 120;
+      }>;
     publishedAt: Schema.Attribute.DateTime;
     seo: Schema.Attribute.Component<'shared.seo', false>;
     updatedAt: Schema.Attribute.DateTime;
@@ -1073,6 +1201,10 @@ export interface ApiCsrPageCsrPage extends Struct.SingleTypeSchema {
       Schema.Attribute.Private;
     environmentCards: Schema.Attribute.Component<'csr.card', true>;
     focusAreas: Schema.Attribute.Component<'csr.focus-area', true>;
+    focusKeywords: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 500;
+      }>;
     givingBackCards: Schema.Attribute.Component<'csr.card', true>;
     heroBreadcrumb: Schema.Attribute.String;
     heroImage: Schema.Attribute.Media<'images'>;
@@ -1084,9 +1216,21 @@ export interface ApiCsrPageCsrPage extends Struct.SingleTypeSchema {
       'api::csr-page.csr-page'
     > &
       Schema.Attribute.Private;
+    metaDescription: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 320;
+      }>;
+    metaTitle: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 100;
+      }>;
     philosophyDescription: Schema.Attribute.Text;
     philosophyImages: Schema.Attribute.Media<'images', true>;
     philosophyTitle: Schema.Attribute.String;
+    primaryKeyword: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 120;
+      }>;
     publishedAt: Schema.Attribute.DateTime;
     seo: Schema.Attribute.Component<'shared.seo', false>;
     stats: Schema.Attribute.Component<'csr.stat', true>;
@@ -1119,6 +1263,10 @@ export interface ApiEhsPageEhsPage extends Struct.SingleTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     features: Schema.Attribute.Component<'shared.feature-item', true>;
+    focusKeywords: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 500;
+      }>;
     gallery: Schema.Attribute.Component<'shared.gallery-item', true>;
     gallerySectionTitle: Schema.Attribute.String;
     heroImage: Schema.Attribute.Media<'images'>;
@@ -1128,10 +1276,22 @@ export interface ApiEhsPageEhsPage extends Struct.SingleTypeSchema {
       'api::ehs-page.ehs-page'
     > &
       Schema.Attribute.Private;
+    metaDescription: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 320;
+      }>;
+    metaTitle: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 100;
+      }>;
     philosophy: Schema.Attribute.Component<'shared.philosophy-item', true>;
     philosophySectionTitle: Schema.Attribute.String;
     pillars: Schema.Attribute.Component<'shared.pillar-item', true>;
     pillarsSectionTitle: Schema.Attribute.String;
+    primaryKeyword: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 120;
+      }>;
     programs: Schema.Attribute.Component<'shared.program-item', true>;
     programsSectionTitle: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
@@ -1294,6 +1454,10 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     ctaText: Schema.Attribute.String;
+    focusKeywords: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 500;
+      }>;
     heroImage: Schema.Attribute.Media<'images'>;
     heroSubtitle: Schema.Attribute.Text;
     heroTitle: Schema.Attribute.String;
@@ -1317,6 +1481,18 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     > &
       Schema.Attribute.Private;
     mapMarkers: Schema.Attribute.Component<'shared.map-marker', true>;
+    metaDescription: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 320;
+      }>;
+    metaTitle: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 100;
+      }>;
+    primaryKeyword: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 120;
+      }>;
     publishedAt: Schema.Attribute.DateTime;
     stat1Label: Schema.Attribute.String;
     stat1Value: Schema.Attribute.String;
@@ -1395,6 +1571,10 @@ export interface ApiLeadershipPageLeadershipPage
     executives: Schema.Attribute.Component<'shared.person-card', true>;
     executiveSubtitle: Schema.Attribute.Text;
     executiveTitle: Schema.Attribute.String;
+    focusKeywords: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 500;
+      }>;
     heroImage: Schema.Attribute.Media<'images'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -1402,6 +1582,18 @@ export interface ApiLeadershipPageLeadershipPage
       'api::leadership-page.leadership-page'
     > &
       Schema.Attribute.Private;
+    metaDescription: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 320;
+      }>;
+    metaTitle: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 100;
+      }>;
+    primaryKeyword: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 120;
+      }>;
     publishedAt: Schema.Attribute.DateTime;
     seo: Schema.Attribute.Component<'shared.seo', false>;
     subtitle: Schema.Attribute.Text;
@@ -1432,6 +1624,10 @@ export interface ApiOngoingPageOngoingPage extends Struct.SingleTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
+    focusKeywords: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 500;
+      }>;
     heroBreadcrumb: Schema.Attribute.String;
     heroImage: Schema.Attribute.Media<'images'>;
     heroSubtitle: Schema.Attribute.String;
@@ -1442,6 +1638,18 @@ export interface ApiOngoingPageOngoingPage extends Struct.SingleTypeSchema {
       'api::ongoing-page.ongoing-page'
     > &
       Schema.Attribute.Private;
+    metaDescription: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 320;
+      }>;
+    metaTitle: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 100;
+      }>;
+    primaryKeyword: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 120;
+      }>;
     publishedAt: Schema.Attribute.DateTime;
     seo: Schema.Attribute.Component<'shared.seo', false>;
     updatedAt: Schema.Attribute.DateTime;
@@ -1553,6 +1761,7 @@ export interface ApiPolicyPagePolicyPage extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    focusKeywords: Schema.Attribute.Text;
     heroImage: Schema.Attribute.Media<'images'>;
     heroSubtitle: Schema.Attribute.String;
     lastUpdated: Schema.Attribute.Date;
@@ -1562,6 +1771,9 @@ export interface ApiPolicyPagePolicyPage extends Struct.SingleTypeSchema {
       'api::policy-page.policy-page'
     > &
       Schema.Attribute.Private;
+    metaDescription: Schema.Attribute.Text;
+    metaTitle: Schema.Attribute.String;
+    primaryKeyword: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.Component<'shared.policy-section', true>;
     seo: Schema.Attribute.Component<'shared.seo', false>;
@@ -1592,6 +1804,10 @@ export interface ApiSolutionPageSolutionPage
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     features: Schema.Attribute.Component<'shared.feature-card', true>;
+    focusKeywords: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 500;
+      }>;
     grids: Schema.Attribute.Component<'shared.solution-grid', true>;
     heroImage: Schema.Attribute.Media<'images'>;
     heroSubtitle: Schema.Attribute.String;
@@ -1605,6 +1821,18 @@ export interface ApiSolutionPageSolutionPage
     mainFeatureImage: Schema.Attribute.Media<'images'>;
     mainFeatureText: Schema.Attribute.RichText;
     mainFeatureTitle: Schema.Attribute.String;
+    metaDescription: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 320;
+      }>;
+    metaTitle: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 100;
+      }>;
+    primaryKeyword: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 120;
+      }>;
     publishedAt: Schema.Attribute.DateTime;
     seo: Schema.Attribute.Component<'shared.seo', false>;
     slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;

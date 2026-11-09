@@ -23,6 +23,10 @@
     "focusAreas": { "type": "component", "repeatable": true, "component": "csr.focus-area" },
     "givingBackCards": { "type": "component", "repeatable": true, "component": "csr.card" },
     "environmentCards": { "type": "component", "repeatable": true, "component": "csr.card" },
-    "celebrationCards": { "type": "component", "repeatable": true, "component": "csr.card" }
+    "celebrationCards": { "type": "component", "repeatable": true, "component": "csr.card" },
+    "primaryKeyword": { "type": "string", "maxLength": 120 },
+    "metaTitle": { "type": "string", "maxLength": 100 },
+    "metaDescription": { "type": "text", "maxLength": 320 },
+    "focusKeywords": { "type": "text", "maxLength": 500 }
   }
 }

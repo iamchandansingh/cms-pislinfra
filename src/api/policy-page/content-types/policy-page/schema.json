@@ -16,6 +16,18 @@
     
     "sections": { "type": "component", "repeatable": true, "component": "shared.policy-section" },
     
+    "primaryKeyword": {
+      "type": "string"
+    },
+    "metaTitle": {
+      "type": "string"
+    },
+    "metaDescription": {
+      "type": "text"
+    },
+    "focusKeywords": {
+      "type": "text"
+    },
     "seo": { "type": "component", "repeatable": false, "component": "shared.seo" }
   }
 }

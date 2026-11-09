@@ -15,10 +15,10 @@ export default ({ env }: { env: any }) => {
         keepAlive: true,
       },
       pool: {
-        min: 1,
-        max: 8,
-        acquireTimeoutMillis: 60000,
-        idleTimeoutMillis: 30000,
+        min: 0,
+        max: 10,
+        acquireTimeoutMillis: 30000,
+        idleTimeoutMillis: 10000,
       },
     },
   };
