@@ -1,0 +1,382 @@
+.pisl-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.pisl-field-row {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 12px;
+}
+
+.pisl-field-row.pisl-wide {
+  grid-column: 1 / -1;
+}
+
+.pisl-label {
+  display: block;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 6px;
+}
+
+.pisl-label code {
+  font-weight: 400;
+  font-size: 11px;
+  color: #64748b;
+  background: #e2e8f0;
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+.pisl-input,
+.pisl-select,
+.pisl-textarea {
+  width: 100%;
+  max-width: 100%;
+}
+
+.pisl-media-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pisl-media-preview img {
+  max-width: 180px;
+  max-height: 110px;
+  object-fit: contain;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  background: #fff;
+  padding: 3px;
+}
+
+.pisl-file-pill,
+.pisl-empty-pill {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+.pisl-empty-pill {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+.pisl-gallery-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 10px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pisl-gallery-item {
+  position: relative;
+  width: 96px;
+  height: 76px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  background: #fff;
+  cursor: move;
+  overflow: hidden;
+}
+
+.pisl-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pisl-gallery-remove {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 20px;
+  height: 20px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.85);
+  color: #fff;
+  cursor: pointer;
+  line-height: 18px;
+  font-weight: 700;
+}
+
+.pisl-repeater-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.pisl-repeater-row {
+  background: #fff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.pisl-repeater-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #f1f5f9;
+  font-weight: 600;
+  color: #334155;
+}
+
+.pisl-repeater-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.pisl-sub-field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.pisl-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.pisl-badge-pub {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.pisl-badge-draft {
+  background: #fef9c3;
+  color: #854d0e;
+}
+
+.pisl-badge-warn {
+  background: #ffedd5;
+  color: #9a3412;
+}
+
+.pisl-badge-info {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+.pisl-col-thumb {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+}
+
+.pisl-col-logo {
+  width: 84px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  padding: 3px 6px;
+  display: block;
+}
+
+@media (max-width: 960px) {
+  .pisl-form-grid,
+  .pisl-repeater-fields {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   Navigation Menu Builder (Visual, No-JSON)
+   ========================================================================== */
+.pisl-nav-builder {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 8px;
+}
+
+.pisl-nav-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pisl-nav-item {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.pisl-nav-item:hover {
+  border-color: #94a3b8;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+}
+
+.pisl-nav-item-header {
+  background: #f1f5f9;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pisl-nav-item-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pisl-nav-handle {
+  cursor: grab;
+  color: #64748b;
+  font-size: 16px;
+  user-select: none;
+  padding-right: 2px;
+}
+
+.pisl-nav-title-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.pisl-nav-route-badge {
+  font-size: 11px;
+  color: #0284c7;
+  background: #e0f2fe;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+.pisl-nav-item-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pisl-nav-item-body {
+  padding: 14px;
+}
+
+.pisl-nav-main-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.pisl-nav-sublinks-wrapper {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-left: 3px solid #ff8d4b;
+  border-radius: 6px;
+  padding: 12px;
+}
+
+.pisl-nav-sublinks-head {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 13px;
+  color: #334155;
+}
+
+.pisl-nav-sublinks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.pisl-nav-sublink-row {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pisl-sublink-handle {
+  cursor: grab;
+  color: #94a3b8;
+  font-size: 14px;
+  user-select: none;
+}
+
+.pisl-sublink-field label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 2px;
+}
+
+.pisl-sublink-field input {
+  padding: 4px 8px;
+  font-size: 13px;
+  box-sizing: border-box;
+}
+
+.pisl-sublink-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 14px;
+}
+
+.pisl-sublink-remove {
+  font-size: 18px;
+  color: #b91c1c;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+}
+
+.pisl-sublink-remove:hover {
+  color: #ef4444;
+}
+
+@media (max-width: 782px) {
+  .pisl-nav-main-grid {
+    grid-template-columns: 1fr;
+  }
+  .pisl-nav-sublink-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .pisl-sublink-actions {
+    margin-top: 6px;
+    justify-content: flex-end;
+  }
+}

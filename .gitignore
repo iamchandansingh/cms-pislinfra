@@ -1,0 +1,11 @@
+.env
+.env.*
+*.local.*
+.local-db/
+.bin/
+.wp-local-credentials.txt
+.DS_Store
+backups/
+exports/
+*.zip
+*.tar.gz
